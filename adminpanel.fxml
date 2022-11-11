@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TreeView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<SplitPane dividerPositions="0.5" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="miniTwitter.Driver">
+   <items>
+      <AnchorPane fx:id="leftAnchorPane">
+         <children>
+            <TreeView fx:id="treeId" editable="true" layoutX="12.0" layoutY="12.0" prefHeight="323.0" prefWidth="305.0" />
+         </children></AnchorPane>
+      <AnchorPane>
+         <children>
+            <TextField fx:id="userIdTextField" layoutX="30.0" layoutY="21.0" promptText="User ID" />
+            <Button fx:id="addUserButton" layoutX="225.0" layoutY="21.0" mnemonicParsing="false" onAction="#addUserToTree" text="Add User" />
+            <TextField fx:id="groupIdTextField" layoutX="30.0" layoutY="67.0" promptText="Group ID" />
+            <Button fx:id="addGroupButton" layoutX="220.0" layoutY="67.0" mnemonicParsing="false" onAction="#addUserGroupToTree" text="Add Group" />
+            <Button fx:id="userViewButton" layoutX="223.0" layoutY="119.0" mnemonicParsing="false" onAction="#goToUserView" text="User View" />
+            <Button fx:id="showUserTotalButton" layoutX="54.0" layoutY="183.0" mnemonicParsing="false" onAction="#showTotalUsers" text="Show User Total" />
+            <Button fx:id="showGroupTotalButton" layoutX="192.0" layoutY="183.0" mnemonicParsing="false" onAction="#showTotalGroups" text="Show Group Total" />
+            <Button fx:id="showMessageTotalButton" layoutX="114.0" layoutY="224.0" mnemonicParsing="false" onAction="#showTotalMessages" text="Show Messages Total" />
+            <Button fx:id="showPositiveButton" layoutX="103.0" layoutY="258.0" mnemonicParsing="false" text="Show Positive Percentage" />
+            <TextField fx:id="userNameTextField" layoutX="20.0" layoutY="315.0" promptText="Enter User Name" />
+            <Button fx:id="createUserButton" layoutX="209.0" layoutY="315.0" mnemonicParsing="false" onAction="#createNewUser" text="Create User" />
+            <Button fx:id="createGroupButton" layoutX="204.0" layoutY="377.0" mnemonicParsing="false" onAction="#createNewGroup" text="Create Group" />
+            <TextField fx:id="groupNameTextField" layoutX="20.0" layoutY="377.0" promptText="Enter Group Name" />
+            <Label fx:id="userIdLabel" layoutX="20.0" layoutY="347.0" text="User ID: " />
+            <Label fx:id="groupIdLabel" layoutX="20.0" layoutY="409.0" text="Group ID:" />
+            <TextField fx:id="userIdToView" layoutX="28.0" layoutY="119.0" promptText="User ID to View" />
+         </children>
+      </AnchorPane>
+   </items>
+</SplitPane>
