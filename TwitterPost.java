@@ -14,4 +14,8 @@ public class TwitterPost {
 	public void setTwitterPost(String userPost) {
 		post = userPost;
 	}
+
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
+	}
 }
