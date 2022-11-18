@@ -1,15 +1,20 @@
 package miniTwitter;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
-public class User extends TypeEntry implements Observer {
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+
+public class User extends TypeEntry implements Observer, Visitable {
 	AdminPanel adminPanel = AdminPanel.getAdminInstance();
 	private String userName;
 	private List<User> followers;
 	private List<User> followings;
 	private List<TwitterPost> newsFeed;
+    Scene userViewScene;
+	Stage userStage;
 	
 	public User(String givenName) {
 		super();
@@ -18,9 +23,13 @@ public class User extends TypeEntry implements Observer {
 		followings = new ArrayList<User>();
 		newsFeed = new ArrayList<TwitterPost>();
 	}
-	
+
 	public String getUserName() {
 		return this.userName;
+	}
+
+	public void setUserName(String givenName) {
+		this.userName = givenName;
 	}
 	
 	public List<User> getFollowers() {
@@ -53,20 +62,17 @@ public class User extends TypeEntry implements Observer {
 		}
 	}
 	
-	public void setUserName(String givenName) {
-		this.userName = givenName;
-	}
-	
 	public void startFollowing(String userIdToFollow) {
 		User user = AdminPanel.getAdminInstance().getUser(userIdToFollow);
 		this.followings.add(user);
+		user.getFollowers().add(this);
 	}
 	
 	public TwitterPost createPost(String msg) {
-		TwitterPost newPost = new TwitterPost(msg);
+		TwitterPost newPost = new TwitterPost(this.getUserName() + " posted: " + msg);
 		newsFeed.add(newPost);
 		adminPanel.getTwitterPosts().add(newPost);
-		notifyFollowers(newPost);
+		this.notifyFollowers(newPost);
 
 		return newPost;
 	}
@@ -79,7 +85,32 @@ public class User extends TypeEntry implements Observer {
 	
 	public void update(TwitterPost newPost) {
 		this.getNewsFeed().add(newPost);
-		System.out.println("Added to " + this.getUserName() + "'s news feed");
+	}
+
+	@Override
+    public String toString() {
+        return this.userName;
+    }
+
+	@Override
+	public void accept(Visitor visitor) {
+		visitor.visit(this);
+	}
+
+	public Stage getStage() {
+		return this.userStage;
+	}
+
+	public void setStage(Stage givenStage) {
+		this.userStage = givenStage;
+	}
+	
+	public Scene getScene() {
+		return this.userViewScene;
+	}
+
+	public void setScene(Parent root) {
+		this.userViewScene = new Scene(root, 700, 450);
 	}
 	
 	

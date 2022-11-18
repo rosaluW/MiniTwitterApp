@@ -1,14 +1,23 @@
 package miniTwitter;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
-public class AdminPanel {
+public class AdminPanel implements Visitor{
 	private static AdminPanel adminInstance;
 	private HashMap<String, User> twitterUsers = new HashMap<String, User>();
 	private HashMap<String, UserGroup> twitterUserGroups = new HashMap<String, UserGroup>();
 	private List<TwitterPost> twitterPosts = new ArrayList<TwitterPost>();
+	private static List<String> positiveWords = new ArrayList<String>(Arrays.asList("good", "love",
+				"excellent", "awesome", "amazing", "best"));
+	private double totalWords = 0.0;
+	private double totalPositiveWords = 0.0;
+
+	private int userTotal = 0;
+	private int groupTotal = 0;
+	private int postTotal = 0;
 	
 	private AdminPanel() {
 	}
@@ -53,12 +62,42 @@ public class AdminPanel {
 
 		return newGroup;
 	}
-	
-	public int getTotalUsers() {
-		return this.twitterUsers.size();
+
+	public void visit(User user) {
+		this.userTotal++;
 	}
-	
-	public int getTotalGroups() {
-		return this.twitterUserGroups.size();
+
+	public void visit(UserGroup userGroup) {
+		this.groupTotal++;
+	}
+    public void visit(TwitterPost twitterPost) {
+		this.postTotal++;
+		String [] post = twitterPost.getPost().split("\\s+");
+		for (int i = 0; i < post.length; i++) {
+			if (positiveWords.contains(post[i])) {
+				totalPositiveWords += 1.0;
+			}
+		}
+		totalWords += post.length - 2;
+	}
+
+	public int getUserTotal() {
+		return this.userTotal;
+	}
+
+	public int getGroupTotal() {
+		return this.groupTotal;
+	}
+
+	public int getPostTotal() {
+		return this.postTotal;
+	}
+
+	public double getTotalWords() {
+		return this.totalWords;
+	}
+
+	public double getTotalPositiveWords() {
+		return this.totalPositiveWords;
 	}
 }
