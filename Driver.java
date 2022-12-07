@@ -5,8 +5,6 @@ import java.net.URL;
 import java.text.DecimalFormat;
 import java.util.ResourceBundle;
 
-import javax.swing.Action;
-
 import javafx.event.ActionEvent;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -51,8 +49,12 @@ public class Driver implements Initializable {
     @FXML private Button createGroupButton;
     @FXML private Label groupIdLabel;
 
+    @FXML private Button validateButton;
+    @FXML private Button lastUpdateButton;
+
     public void createNewUser(ActionEvent event) {
         User newUser = adminPanel.createNewUser(userNameTextField.getText());
+        adminPanel.setLastUpdatedUser(newUser);
         userIdLabel.setText("User ID: " + newUser.getEntryId());
         adminPanel.visit(newUser);
     }
@@ -116,6 +118,23 @@ public class Driver implements Initializable {
 
         createPopUp(windowTitle, labelTitle);
     } 
+
+    public void showValidUsers(ActionEvent event) {
+        //Program uses hashmaps for both users and groups, thus all users will always be valid
+        String windowTitle, labelTitle;
+        windowTitle = "Validate";
+        labelTitle = "All users are valid";
+
+        createPopUp(windowTitle, labelTitle);
+    }
+
+    public void showLastUpdatedUser(ActionEvent event) {
+        String windowTitle, labelTitle;
+        windowTitle = "Last Updated User";
+        labelTitle = "Last Updated User: " + adminPanel.getLastUpdatedUser();
+
+        createPopUp(windowTitle, labelTitle);
+    }
 
     public void showTotalMessages(ActionEvent event) {
         String windowTitle, labelTitle;
