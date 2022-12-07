@@ -1,5 +1,6 @@
 package miniTwitter;
 
+import java.lang.ProcessBuilder.Redirect.Type;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -18,6 +19,8 @@ public class AdminPanel implements Visitor{
 	private int userTotal = 0;
 	private int groupTotal = 0;
 	private int postTotal = 0;
+
+	private TypeEntry lastUpdatedUser;
 	
 	private AdminPanel() {
 	}
@@ -27,6 +30,14 @@ public class AdminPanel implements Visitor{
 			adminInstance = new AdminPanel();
 		}
 		return adminInstance;
+	}
+
+	public void setLastUpdatedUser(TypeEntry givenUser) {
+		this.lastUpdatedUser = givenUser;
+	}
+
+	public TypeEntry getLastUpdatedUser() {
+		return this.lastUpdatedUser;
 	}
 
 	public User getUser(String givenUserId) {

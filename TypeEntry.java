@@ -1,12 +1,13 @@
 package miniTwitter;
-
 import java.util.Random;
 
 public abstract class TypeEntry {
 	private String entryId;
+	private long creationTime;
 	
 	public TypeEntry() {
 		setEntryId(generateRandomId());
+		setCreationTime(System.currentTimeMillis());
 	}
 	
 	public void setEntryId(String givenId) {
@@ -15,6 +16,14 @@ public abstract class TypeEntry {
 	
 	public String getEntryId() {
 		return entryId;
+	}
+
+	public void setCreationTime(long givenTime) {
+		creationTime = givenTime;
+	}
+
+	public long getCreationTime() {
+		return this.creationTime;
 	}
 	
 	public String generateRandomId() {

@@ -19,17 +19,19 @@
             <Button fx:id="addUserButton" layoutX="225.0" layoutY="21.0" mnemonicParsing="false" onAction="#addUserToTree" text="Add User" />
             <TextField fx:id="groupIdTextField" layoutX="30.0" layoutY="67.0" promptText="Group ID" />
             <Button fx:id="addGroupButton" layoutX="220.0" layoutY="67.0" mnemonicParsing="false" onAction="#addUserGroupToTree" text="Add Group" />
-            <Button fx:id="userViewButton" layoutX="139.0" layoutY="129.0" mnemonicParsing="false" onAction="#goToUserView" text="User View" />
-            <Button fx:id="showUserTotalButton" layoutX="54.0" layoutY="183.0" mnemonicParsing="false" onAction="#showTotalUsers" text="Show User Total" />
-            <Button fx:id="showGroupTotalButton" layoutX="192.0" layoutY="183.0" mnemonicParsing="false" onAction="#showTotalGroups" text="Show Group Total" />
-            <Button fx:id="showMessageTotalButton" layoutX="114.0" layoutY="224.0" mnemonicParsing="false" onAction="#showTotalMessages" text="Show Messages Total" />
-            <Button fx:id="showPositiveButton" layoutX="103.0" layoutY="258.0" mnemonicParsing="false" onAction="#showPositivePercentage" text="Show Positive Percentage" />
+            <Button fx:id="userViewButton" layoutX="139.0" layoutY="108.0" mnemonicParsing="false" onAction="#goToUserView" text="User View" />
+            <Button fx:id="showUserTotalButton" layoutX="54.0" layoutY="149.0" mnemonicParsing="false" onAction="#showTotalUsers" text="Show User Total" />
+            <Button fx:id="showGroupTotalButton" layoutX="192.0" layoutY="149.0" mnemonicParsing="false" onAction="#showTotalGroups" text="Show Group Total" />
+            <Button fx:id="showMessageTotalButton" layoutX="114.0" layoutY="230.0" mnemonicParsing="false" onAction="#showTotalMessages" text="Show Messages Total" />
+            <Button fx:id="showPositiveButton" layoutX="103.0" layoutY="267.0" mnemonicParsing="false" onAction="#showPositivePercentage" text="Show Positive Percentage" />
             <TextField fx:id="userNameTextField" layoutX="20.0" layoutY="315.0" promptText="Enter User Name" />
             <Button fx:id="createUserButton" layoutX="209.0" layoutY="315.0" mnemonicParsing="false" onAction="#createNewUser" text="Create User" />
             <Button fx:id="createGroupButton" layoutX="204.0" layoutY="377.0" mnemonicParsing="false" onAction="#createNewGroup" text="Create Group" />
             <TextField fx:id="groupNameTextField" layoutX="20.0" layoutY="377.0" promptText="Enter Group Name" />
             <Label fx:id="userIdLabel" layoutX="20.0" layoutY="347.0" text="User ID: " />
             <Label fx:id="groupIdLabel" layoutX="20.0" layoutY="409.0" text="Group ID:" />
+            <Button fx:id="validateButton" layoutX="59.0" layoutY="190.0" mnemonicParsing="false" onAction="#showValidUsers" text="Validate Users" />
+            <Button fx:id="lastUpdateButton" layoutX="191.0" layoutY="190.0" mnemonicParsing="false" onAction="#showLastUpdatedUser" text="Last Updated User" />
          </children>
       </AnchorPane>
    </items>
